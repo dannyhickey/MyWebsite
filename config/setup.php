@@ -9,6 +9,9 @@ $database = 'danielhickey_db';
 # Database Connection Here...
 $dbc = mysqli_connect($host, $user, $password, $database) OR die('Unable to connect because: '.mysqli_connect_error());// die function to kill the page if something is wrong
 
+#Functions:
+include('functions/data.php');
+
 $siteTitle = 'Daniel Hickey';
 
 if(isset($_GET['page']))// if the page key exists
@@ -19,8 +22,6 @@ if(isset($_GET['page']))// if the page key exists
 }
 
 # page setup
-$query = "SELECT * FROM pages WHERE id = $pageID";// Selecting a page from my database.
-$result = mysqli_query($dbc, $query);
-$pageArray = mysqli_fetch_assoc($result);
+$pageArray = dataPage($dbc, $pageID);
 
 ?>
