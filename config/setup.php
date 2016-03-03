@@ -11,5 +11,9 @@ $dbc = mysqli_connect($host, $user, $password, $database) OR die('Unable to conn
 
 $siteTitle = 'Daniel Hickey';
 $pageTitle = 'Home Page';
-	
+
+$query = "SELECT * FROM pages WHERE id = 1";// Selecting the home page from my database.
+$result = mysqli_query($dbc, $query);
+$pageArray = mysqli_fetch_assoc($result);
+
 ?>

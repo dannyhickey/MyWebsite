@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>	
-	<title><?php echo $page_title . " | "  . $site_title; ?></title>	
+	<title><?php echo $pageArray['title'] . " | "  . $siteTitle; ?></title>	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,10 @@
 		</nav><!-- END of main NAV-->
 		
 		<div class="container">				
-			<h1>Content</h1>				
+			<h1><?php echo $pageArray['header'];//associative array to the "header" column.?></h1>
+			
+			<p><?php echo $pageArray['body'];//associative array to the "header" column.?></p>
+							
 		</div>
 	</div><!--END wrapper-->
 	
