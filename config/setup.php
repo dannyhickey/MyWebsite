@@ -9,6 +9,9 @@ $database = 'danielhickey_db';
 # Database Connection Here...
 $dbc = mysqli_connect($host, $user, $password, $database) OR die('Unable to connect because: '.mysqli_connect_error());// die function to kill the page if something is wrong
 
+#Constants:
+define('D_TEMPLATE', 'template');
+
 #Functions:
 include('functions/data.php');
 

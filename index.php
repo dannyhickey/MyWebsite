@@ -15,16 +15,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container">
-				<ul class="nav navbar-nav">
-					<li<?php if($pageID == 1){ echo ' class="active"'; } ?>><a href="?page=1">Home</a></li>
-					<li<?php if($pageID == 2){ echo ' class="active"'; } ?>><a href="?page=2">About Me</a></li>
-					<li><a href="index.php?page=3">FAQ</a></li>
-					<li><a href="index.php?page=4">Contact</a></li>				
-				</ul>
-			</div>			
-		</nav><!-- END of main NAV-->
+		<?php include (D_TEMPLATE . '/navigation.php'); ?>
 		
 		<div class="container">				
 			<h1>
@@ -40,11 +31,8 @@
 		</div>
 	</div><!--END wrapper-->
 	
-	<footer id="footer">
-		<div class="container">
-			<p>insert footer here</p>				
-		</div>			
-	</footer>	<!--END footer-->				
+	<?php include (D_TEMPLATE . '/footer.php'); ?>
+					
 </body>
 	
 	
