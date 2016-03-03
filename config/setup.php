@@ -10,9 +10,16 @@ $database = 'danielhickey_db';
 $dbc = mysqli_connect($host, $user, $password, $database) OR die('Unable to connect because: '.mysqli_connect_error());// die function to kill the page if something is wrong
 
 $siteTitle = 'Daniel Hickey';
-$pageTitle = 'Home Page';
 
-$query = "SELECT * FROM pages WHERE id = 1";// Selecting the home page from my database.
+if(isset($_GET['page']))// if the page key exists
+{
+	$pageID = $_GET['page'];//assigns the value given in URL to $pageID.
+}else{	
+	$pageID = 1;//else assigns the value 1 to pageID to revert to home page. 
+}
+
+# page setup
+$query = "SELECT * FROM pages WHERE id = $pageID";// Selecting a page from my database.
 $result = mysqli_query($dbc, $query);
 $pageArray = mysqli_fetch_assoc($result);
 
