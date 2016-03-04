@@ -18,20 +18,22 @@
 		<?php include (D_TEMPLATE . '/navigation.php'); ?>
 		
 		<div class="container">				
-			<h1>
-				<?php 
-					echo $pageArray['header']; //associative array to the "header" column.
-					
-				
-				?>
-			</h1>
+			<h1><?php echo $pageArray['header']; //associative array to the "header" column.?></h1>
 			
-			<?php echo $pageArray['body'];//associative array to the "header" column.?>
-							
+			<?php echo $pageArray['body_formatted'];//associative array to the "body_formatted" column.?>
+			
+			<?php if(isset($_GET['debug']) == 1) {?>
+			
+			<pre><?php print_r($pageArray);?></pre>
+			
+			<?php } ?>
+			
 		</div>
 	</div><!--END wrapper-->
 	
 	<?php include (D_TEMPLATE . '/footer.php'); ?>
+	
+	<div id="console_debug">Debugger Window</div>
 					
 </body>
 	

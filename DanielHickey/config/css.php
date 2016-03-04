@@ -41,4 +41,9 @@
 			height: 240px;
 			margin-left: 10px;			
 		}
+		
+		#btn_debug
+		{
+			position: absolute;
+		}
 	</style>
