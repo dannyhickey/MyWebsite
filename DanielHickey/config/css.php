@@ -33,4 +33,12 @@
 			height: 60px;
 			background-color: #f5f5f5;
 		}
+		
+		#laptop_img
+		{
+			float: right;
+			width: 320px;
+			height: 240px;
+			margin-left: 10px;			
+		}
 	</style>

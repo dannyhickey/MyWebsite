@@ -26,7 +26,7 @@
 				?>
 			</h1>
 			
-			<p><?php echo $pageArray['body'];//associative array to the "header" column.?></p>
+			<?php echo $pageArray['body'];//associative array to the "header" column.?>
 							
 		</div>
 	</div><!--END wrapper-->
