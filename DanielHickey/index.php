@@ -1,4 +1,10 @@
+<?php 	/* 	Building a dynamic website using PHP, HTML, CSS, javaScript and MySQL
+			Testing on Apache Server. 
+		*/ 
+?>
+
 <?php include('config/setup.php');?>
+
 
 <!DOCTYPE html>
 <html>
