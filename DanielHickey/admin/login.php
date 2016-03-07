@@ -1,11 +1,30 @@
-<?php # Database Connecton:
+<?php 
+
+# Start Session:
+session_start();
+
+# Database Connecton:
 include ('../config/connection.php');
+
+if($_POST)
+{
+	$query = "SELECT * FROM users WHERE email = '$_POST[email]' AND password = SHA1('$_POST[password]')";
+	$result = mysqli_query($dbc, $query);
+	
+	
+	if(mysqli_num_rows($result) == 1)
+	{
+		$_SESSION['username'] = $_POST['email'];
+		header('Location: index.php');
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>	
-	<title><?php echo $pageArray['title'] . " | " . $siteTitle; ?></title>	
+	<title>Admin Login</title>	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,16 +57,17 @@ include ('../config/connection.php');
 					</div><!-- End Panel Heading -->
 					
 						<div class="panel-body">
-							<form>
+							
+							<form action="login.php" method="post" role="form">
 						
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">Email address</label>
-							    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+							    <label for="email">Email address</label>
+							    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
 							  </div>
 							  
 							  <div class="form-group">
-							    <label for="exampleInputPassword1">Password</label>
-							    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							    <label for="password">Password</label>
+							    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
 							  </div>
 							  <!--		  
 							  <div class="checkbox">
