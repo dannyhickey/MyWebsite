@@ -1,4 +1,15 @@
 <?php 
+function data_setting_value($dbc, $id)
+{
+	$query = "SELECT * FROM settings WHERE id = '$id'";
+	$result = mysqli_query($dbc, $query);
+
+	$dataArray = mysqli_fetch_assoc($result);
+	
+	return $dataArray['value'];
+}
+
+
 function dataPage($dbc, $id)
 {
 	$query = "SELECT * FROM pages WHERE id = $id";// Selecting a page from my database.

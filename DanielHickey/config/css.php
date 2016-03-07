@@ -59,15 +59,14 @@
 			left: 0px;
 			width: 60%;
 			height: 700px;
-		}
-		
-		#console_debug pre
-		{
-			height: 500px;
-			
 			/* I'm setting the y axis of the pre 
 			 * tag to scroll whenever there is overflow*/
 			overflow-y: scroll; 
-			
+			background-color: #FFFFFF; 
+			box-shadow: 2px 2px 5px #CCCCCC;
+		}
+		
+		#console_debug pre
+		{			
 		}
 	</style>

@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default" role="navigation">
 	
-			<?php //The debugger button with the "bug" symbol sourced on fontawesome.io ?> 
+			<?php if($debug == 1){?> 		 
 			<button id="btn_debug" class="btn btn-warning"><i class="fa fa-bug"></i></button>
+			<?php } ?>
+			
 			
 			<div class="container">
 				
