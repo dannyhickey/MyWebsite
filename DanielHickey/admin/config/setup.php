@@ -34,4 +34,8 @@ if(isset($_GET['page']))// if the page key exists
 # page setup:
 $pageArray = dataPage($dbc, $pageID);
 
+# User Setup
+
+$user = data_user($dbc, $_SESSION['username']);
+
 ?>

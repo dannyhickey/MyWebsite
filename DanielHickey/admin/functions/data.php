@@ -9,6 +9,20 @@ function data_setting_value($dbc, $id)
 	return $dataArray['value'];
 }
 
+function data_user($dbc, $id)
+{
+	$query = "SELECT * FROM users WHERE email = '$id'";
+	$result = mysqli_query($dbc, $query);
+	
+	$data = mysqli_fetch_assoc($result);
+	
+	$data['fullname'] = $data['first']. ' ' . $data['last'];
+	
+	$data['fullname_reverse'] = $data['last']. ', ' . $data['first'];
+	
+	return $data;
+	
+}
 
 function dataPage($dbc, $id)
 {

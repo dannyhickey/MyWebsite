@@ -49,11 +49,11 @@
 		
 		#btn_debug
 		{
-			position: absolute;
+			/*position: absolute;
 			
-		/*move button to the right 
-		 * and take it back 5 pixels*/
-			right: 5px; 
+		//move button to the right 
+		  //and take it back 5 pixels
+			right: 5px;  */
 		}
 		
 		#console_debug 
