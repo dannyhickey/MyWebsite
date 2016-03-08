@@ -32,6 +32,30 @@ if(!isset($_SESSION['username']))
 		
 		<h1>Admin Dashboard</h1>
 		
+		<div class="row">
+			<div class="col-md-3">
+				
+				<?php
+				
+					$query = "SELECT * FROM pages ORDER BY title ASC";
+					$result = mysqli_query($dbc, $query);
+					
+					while ($page_list = mysqli_fetch_assoc($result)) {
+						
+						echo $page_list['title'];
+					}				
+				?>
+				
+			</div>
+			
+			<div class="col-md-9">
+				
+				<p>Page Form</p>
+				
+			</div>
+			
+		</div>
+		
 	</div><!--END wrapper-->
 	
 	<?php include (D_TEMPLATE . '/footer.php'); ?>
