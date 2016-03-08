@@ -48,10 +48,7 @@ if(!isset($_SESSION['username']))
 						
 						<a class="list-group-item" href="#">
 							<h4 class="list-group-item-heading"><?php echo $page_list['title']; ?> </h4>
-							<p class="list-group-item-text">
-								<?php echo $blurb; ?> </p>
-							</p>
-							
+							<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 						</a>
 						
 					<?php } ?>
@@ -60,38 +57,62 @@ if(!isset($_SESSION['username']))
 			
 			<div class="col-md-9">
 				
-				<form action="index.php" method="post" role="form"></form>
+				<?php 
+				
+				if($_POST['submitted'] == 1)
+				{
+					$query = "INSERT INTO page (title, label, header, body) VALUES 
+					('$_POST[title]', '$_POST[label]', '$_POST[header]', '$_POST[body]')";
+					$result = mysqli_query($dbc, $query);
+					
+					if($result)
+					{
+						echo '<p>Page was added</p>';
+					}else{
+						echo '<p>Page could not be added due to: '.mysqli_error($dbc);
+						echo '<p>'.$query.'</p>';
+					}
+				}
+				
+				 ?>
+				
+				
+				<form action="index.php" method="post" role="form">
 				<div class ="form-group">
 					
-					<label for="title">Title</label>
-					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title" />
+					<label for="title">Title:</label>
+					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title">
 					
 				</div>
 				
 				<div class ="form-group">
 					
-					<label for="label">Label</label>
-					<input class="form-control" type="text" name="label" id="label" placeholder="Page Label" />
+					<label for="label">Label:</label>
+					<input class="form-control" type="text" name="label" id="label" placeholder="Page Label">
 					
 				</div>
 				
 				<div class ="form-group">
 					
-					<label for="header">Header</label>
-					<input class="form-control" type="text" name="header" id="header" placeholder="Page Header" />
+					<label for="header">Header:</label>
+					<input class="form-control" type="text" name="header" id="header" placeholder="Page Header">
 					
 				</div>
 				
-					<div class ="form-group">
+				<div class ="form-group">
 					
-					<label for="body">Body</label>
+					<label for="body">Body:</label>
 					<textarea class="form-control" name="body" id="body" rows="8" placeholder="Page Body"></textarea>
 					
 				</div>
 				
-				<button type="submit" class="btn btn-default">Save</button>
+				<button type="submit" class="btn btn-warning">Save</button>
+				<input type="hidden" name="submitted" value="1">
 				
+				</form>
 			</div>
+			
+			
 			
 		</div>
 		
