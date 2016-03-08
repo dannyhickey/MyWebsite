@@ -60,7 +60,36 @@ if(!isset($_SESSION['username']))
 			
 			<div class="col-md-9">
 				
-				<p>Page Form</p>
+				<form action="index.php" method="post" role="form"></form>
+				<div class ="form-group">
+					
+					<label for="title">Title</label>
+					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title" />
+					
+				</div>
+				
+				<div class ="form-group">
+					
+					<label for="label">Label</label>
+					<input class="form-control" type="text" name="label" id="label" placeholder="Page Label" />
+					
+				</div>
+				
+				<div class ="form-group">
+					
+					<label for="header">Header</label>
+					<input class="form-control" type="text" name="header" id="header" placeholder="Page Header" />
+					
+				</div>
+				
+					<div class ="form-group">
+					
+					<label for="body">Body</label>
+					<textarea class="form-control" name="body" id="body" rows="8" placeholder="Page Body"></textarea>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-default">Save</button>
 				
 			</div>
 			
