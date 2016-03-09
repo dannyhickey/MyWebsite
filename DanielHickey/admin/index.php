@@ -35,6 +35,27 @@ if(!isset($_SESSION['username']))
 		<div class="row">
 			<div class="col-md-3">
 				<div class="list-group">
+					
+				<?php 
+				
+				if(isset($_POST['submitted']) == 1)
+				{
+					$query2 = "INSERT INTO pages (title, label, header, body) VALUES 
+					('$_POST[title]', '$_POST[label]', '$_POST[header]', '$_POST[body]')";
+					$result2 = mysqli_query($dbc, $query2);
+					
+					if($result2)
+					{
+						$message = '<p>Page was added</p>';
+					}else{
+						$message = '<p>Page could not be added due to: '.mysqli_error($dbc);
+						$message .= '<p>'.$query2.'</p>';
+					}
+				}
+				
+				 ?>
+					
+					
 				<?php
 				
 					$query = "SELECT * FROM pages ORDER BY title ASC";
@@ -59,24 +80,14 @@ if(!isset($_SESSION['username']))
 				
 				<?php 
 				
-				if($_POST['submitted'] == 1)
-				{
-					$query = "INSERT INTO page (title, label, header, body) VALUES 
-					('$_POST[title]', '$_POST[label]', '$_POST[header]', '$_POST[body]')";
-					$result = mysqli_query($dbc, $query);
-					
-					if($result)
+					if(isset($message))
 					{
-						echo '<p>Page was added</p>';
-					}else{
-						echo '<p>Page could not be added due to: '.mysqli_error($dbc);
-						echo '<p>'.$query.'</p>';
+						echo $message;
 					}
-				}
 				
 				 ?>
 				
-				
+								
 				<form action="index.php" method="post" role="form">
 				<div class ="form-group">
 					
