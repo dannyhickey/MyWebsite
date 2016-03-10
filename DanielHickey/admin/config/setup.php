@@ -1,6 +1,8 @@
 <?php
 // Setup file:
 
+error_reporting(0);
+
 # Database Connecton:
 include('../config/connection.php');
 

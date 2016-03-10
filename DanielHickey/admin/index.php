@@ -35,9 +35,7 @@ if(!isset($_SESSION['username']))
 		<div class="row">
 			
 			<div class="col-md-3">
-				
-				<div class="list-group">
-					
+	
 				<?php 
 				
 				if(isset($_POST['submitted']) == 1)
@@ -61,7 +59,12 @@ if(!isset($_SESSION['username']))
 					}
 				} ?>
 					
+				<div class="list-group">
 					
+				<a class="list-group-item" href="index.php">
+					<h4 class="list-group-item-heading"><i class="fa fa-plus"></i> New Page </h4>							
+				</a>
+				
 				<?php
 				
 					$query = "SELECT * FROM pages ORDER BY title ASC";
@@ -127,12 +130,24 @@ if(!isset($_SESSION['username']))
 						
 						$query = "SELECT id FROM users ORDER BY first ASC";
 						$result = mysqli_query($dbc, $query);						
-					
+						
 						while($user_list = mysqli_fetch_assoc($result))
 						{ 							
 							$user_data = data_user($dbc, $user_list['id']);							
 							?>														
-							<option value = "<?php echo $user_data['id']; ?>"><?php echo $user_data['fullname']; ?></option>
+							<option value="<?php echo $user_data['id']; ?>" 
+								<?php 
+									if(isset($_GET['id']))
+									{
+										if($user_data['id'] == $opened['user']){ echo 'selected'; }	
+									}else{
+										if($user_data['id'] == $user['id']) { echo 'selected'; }
+									}
+									
+									
+									
+									
+									 ?>><?php echo $user_data['fullname']; ?></option>
 						<?php } ?>
 						
 					</select>
