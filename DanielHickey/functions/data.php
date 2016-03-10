@@ -12,7 +12,13 @@ function data_setting_value($dbc, $id)
 
 function data_page($dbc, $id)
 {
-	$query = "SELECT * FROM pages WHERE id = $id";// Selecting a page from my database.
+	if(is_numeric($id))
+	{
+		$cond = "WHERE id = $id";
+	}else{
+		$cond = "WHERE slug = '$id'";
+	}
+	$query = "SELECT * FROM pages $cond";// Selecting a page from my database.
 	$result = mysqli_query($dbc, $query);
 	
 	$data = mysqli_fetch_assoc($result);

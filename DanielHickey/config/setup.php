@@ -20,7 +20,7 @@ if(isset($_GET['page']))// if the page key exists
 {
 	$pageID = $_GET['page'];//assigns the value given in URL to $pageID.
 }else{	
-	$pageID = 1;//else assigns the value 1 to pageID to revert to home page. 
+	$pageID = 'home';//else assigns the value 'home' to pageID to revert to home page. 
 }
 
 # page setup:
