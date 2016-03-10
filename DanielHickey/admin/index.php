@@ -16,7 +16,7 @@ if(!isset($_SESSION['username']))
 <!DOCTYPE html>
 <html>
 <head>	
-	<title><?php echo $pageArray['title'] . " | "  . $siteTitle; ?></title>	
+	<title><?php echo $page['title'] . " | "  . $siteTitle; ?></title>	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,27 +33,33 @@ if(!isset($_SESSION['username']))
 		<h1>Admin Dashboard</h1>
 		
 		<div class="row">
+			
 			<div class="col-md-3">
+				
 				<div class="list-group">
 					
 				<?php 
 				
 				if(isset($_POST['submitted']) == 1)
 				{
-					$query2 = "INSERT INTO pages (title, label, header, body) VALUES 
-					('$_POST[title]', '$_POST[label]', '$_POST[header]', '$_POST[body]')";
-					$result2 = mysqli_query($dbc, $query2);
+				
+				$title = mysqli_real_escape_string($dbc, $_POST['title']);
+				$label = mysqli_real_escape_string($dbc, $_POST['label']);
+				$header = mysqli_real_escape_string($dbc, $_POST['header']);
+				$body = mysqli_real_escape_string($dbc, $_POST['body']);
+				
+				
+					$query = "INSERT INTO pages (user, title, label, header, body) VALUES ($_POST[user], '$title', '$label', '$header', '$body')";
+					$result = mysqli_query($dbc, $query);
 					
-					if($result2)
+					if($result)
 					{
 						$message = '<p>Page was added</p>';
 					}else{
 						$message = '<p>Page could not be added due to: '.mysqli_error($dbc);
-						$message .= '<p>'.$query2.'</p>';
+						$message .= '<p>'.$query.'</p>';
 					}
-				}
-				
-				 ?>
+				} ?>
 					
 					
 				<?php
@@ -62,7 +68,8 @@ if(!isset($_SESSION['username']))
 					$result = mysqli_query($dbc, $query);
 					
 					while ($page_list = mysqli_fetch_assoc($result)) {
-						
+							
+							// strip the tags and then limit to 160 chars
 							$blurb = substr(strip_tags($page_list['body']), 0, 160);
 						
 						?>
@@ -73,8 +80,10 @@ if(!isset($_SESSION['username']))
 						</a>
 						
 					<?php } ?>
-				</div>
-			</div>
+					
+				</div> <!-- End of list-group -->
+				
+			</div>  <!-- End of col-md-3 -->
 			
 			<div class="col-md-9">
 				
@@ -89,10 +98,32 @@ if(!isset($_SESSION['username']))
 				
 								
 				<form action="index.php" method="post" role="form">
+					
 				<div class ="form-group">
 					
 					<label for="title">Title:</label>
 					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title">
+					
+				</div>
+				
+				<div class ="form-group">
+					
+					<label for="user">User:</label>
+					<select class="form-control" name="user" id="user">
+						<option value="0">No user</option>
+						<?php 
+						
+						$query = "SELECT id FROM users ORDER BY first ASC";
+						$result = mysqli_query($dbc, $query);						
+					
+						while($user_list = mysqli_fetch_assoc($result))
+						{ 							
+							$user_data = data_user($dbc, $user_list['id']);							
+							?>														
+							<option value = "<?php echo $user_data['id']; ?>"><?php echo $user_data['fullname']; ?></option>
+						<?php } ?>
+						
+					</select>
 					
 				</div>
 				

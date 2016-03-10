@@ -1,19 +1,11 @@
 <?php
 // Setup file:
 
-$host = 'localhost';
-$user = 'dev'; 
-$password = 'ZQEGAF3h4';
-$database = 'danielhickey_db';
-
-# Database Connection Here...
-//$dbc = mysqli_connect($host, $user, $password, $database) OR die('Unable to connect because: '.mysqli_connect_error());// die function to kill the page if something is wrong
-
 # Database Connecton:
 include('../config/connection.php');
 
 #Constants:
-define('D_TEMPLATE', 'template');
+DEFINE('D_TEMPLATE', 'template');
 
 #Functions:
 include('functions/data.php');
@@ -32,10 +24,9 @@ if(isset($_GET['page']))// if the page key exists
 }
 
 # page setup:
-$pageArray = dataPage($dbc, $pageID);
+$page = data_page($dbc, $pageID);
 
 # User Setup
-
 $user = data_user($dbc, $_SESSION['username']);
 
 ?>

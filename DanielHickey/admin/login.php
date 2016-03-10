@@ -40,7 +40,7 @@ if($_POST)
 </head>
 <body>
 	<div id="wrap">
-		<?php //include (D_TEMPLATE . '/navigation.php');// Main Navigation ?>
+		<?php //include(D_TEMPLATE . '/navigation.php');// Main Navigation ?>
 	<div class="container">		
 		
 		

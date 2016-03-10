@@ -17,6 +17,6 @@
 			
 			<h1>Page Array</h1>
 			<pre>
-				<?php print_r($pageArray);?>
+				<?php print_r($page);?>
 			</pre>	
 		

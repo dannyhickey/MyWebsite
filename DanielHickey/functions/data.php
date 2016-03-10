@@ -10,7 +10,7 @@ function data_setting_value($dbc, $id)
 }
 
 
-function dataPage($dbc, $id)
+function data_page($dbc, $id)
 {
 	$query = "SELECT * FROM pages WHERE id = $id";// Selecting a page from my database.
 	$result = mysqli_query($dbc, $query);
