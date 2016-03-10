@@ -49,7 +49,7 @@ if(!isset($_SESSION['username']))
 				$body = mysqli_real_escape_string($dbc, $_POST['body']);
 				
 				
-					$query = "INSERT INTO pages (user, title, label, header, body) VALUES ($_POST[user], '$title', '$label', '$header', '$body')";
+					$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
 					$result = mysqli_query($dbc, $query);
 					
 					if($result)
@@ -74,7 +74,7 @@ if(!isset($_SESSION['username']))
 						
 						?>
 						
-						<a class="list-group-item" href="#">
+						<a class="list-group-item" href="index.php?id=<?php echo $page_list['id']; ?>">
 							<h4 class="list-group-item-heading"><?php echo $page_list['title']; ?> </h4>
 							<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 						</a>
@@ -95,6 +95,18 @@ if(!isset($_SESSION['username']))
 					}
 				
 				 ?>
+				 
+				 <?php 
+				 
+				 	if(isset($_GET['id']))
+					{
+						$query = "SELECT * FROM pages WHERE id = $_GET[id]";
+						$result = mysqli_query($dbc, $query);
+						
+						$opened = mysqli_fetch_assoc($result);
+					}
+				 
+				  ?>
 				
 								
 				<form action="index.php" method="post" role="form">
@@ -102,7 +114,7 @@ if(!isset($_SESSION['username']))
 				<div class ="form-group">
 					
 					<label for="title">Title:</label>
-					<input class="form-control" type="text" name="title" id="title" placeholder="Page Title">
+					<input class="form-control" type="text" name="title" id="title" value="<?php echo $opened['title']; ?>" placeholder="Page Title">
 					
 				</div>
 				
@@ -129,22 +141,29 @@ if(!isset($_SESSION['username']))
 				
 				<div class ="form-group">
 					
+					<label for="label">Slug:</label>
+					<input class="form-control" type="text" name="slug" id="slug" value="<?php echo $opened['slug']; ?>" placeholder="Page Slug">
+					
+				</div>
+				
+				<div class ="form-group">
+					
 					<label for="label">Label:</label>
-					<input class="form-control" type="text" name="label" id="label" placeholder="Page Label">
+					<input class="form-control" type="text" name="label" id="label" value="<?php echo $opened['label']; ?>" placeholder="Page Label">
 					
 				</div>
 				
 				<div class ="form-group">
 					
 					<label for="header">Header:</label>
-					<input class="form-control" type="text" name="header" id="header" placeholder="Page Header">
+					<input class="form-control" type="text" name="header" id="header" value="<?php echo $opened['header']; ?>" placeholder="Page Header">
 					
 				</div>
 				
 				<div class ="form-group">
 					
 					<label for="body">Body:</label>
-					<textarea class="form-control" name="body" id="body" rows="8" placeholder="Page Body"></textarea>
+					<textarea class="form-control" name="body" id="body" rows="8" placeholder="Page Body"><?php echo $opened['body']; ?></textarea>
 					
 				</div>
 				
