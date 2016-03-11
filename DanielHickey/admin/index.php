@@ -36,39 +36,12 @@ if(!isset($_SESSION['username']))
 			
 			<div class="col-md-3">
 	
-				<?php 
 				
-				if(isset($_POST['submitted']) == 1)
-				{
-				
-					$title = mysqli_real_escape_string($dbc, $_POST['title']);
-					$label = mysqli_real_escape_string($dbc, $_POST['label']);
-					$header = mysqli_real_escape_string($dbc, $_POST['header']);
-					$body = mysqli_real_escape_string($dbc, $_POST['body']);
-					
-					if(isset($_GET['id']) != '')
-					{
-						$query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
-					}else{
-						$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
-					}
-				
-					
-					$result = mysqli_query($dbc, $query);
-					
-					if($result)
-					{
-						$message = '<p>Page was added</p>';
-					}else{
-						$message = '<p>Page could not be added due to: '.mysqli_error($dbc);
-						$message .= '<p>'.$query.'</p>';
-					}
-				} ?>
 					
 				<div class="list-group">
 					
 				<a class="list-group-item" href="index.php">
-					<h4 class="list-group-item-heading"><i class="fa fa-plus"></i> New Page </h4>							
+					<i class="fa fa-plus"></i> New Page 							
 				</a>
 				
 				<?php
@@ -83,7 +56,7 @@ if(!isset($_SESSION['username']))
 						
 						?>
 						
-						<a class="list-group-item" href="index.php?id=<?php echo $page_list['id']; ?>">
+						<a class="list-group-item <?php if($page_list['id'] == $opened['id']) { echo 'active';} ?>" href="index.php?id=<?php echo $page_list['id']; ?>">
 							<h4 class="list-group-item-heading"><?php echo $page_list['title']; ?> </h4>
 							<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 						</a>
@@ -104,19 +77,7 @@ if(!isset($_SESSION['username']))
 					}
 				
 				 ?>
-				 
-				 <?php 
-				 
-				 	if(isset($_GET['id']))
-					{
-						$query = "SELECT * FROM pages WHERE id = $_GET[id]";
-						$result = mysqli_query($dbc, $query);
-						
-						$opened = mysqli_fetch_assoc($result);
-					}
-				 
-				  ?>
-				
+			
 								
 				<form action="index.php?id=<?php  echo $opened['id']; ?>" method="post" role="form">
 					

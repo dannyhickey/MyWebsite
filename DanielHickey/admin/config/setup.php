@@ -13,6 +13,7 @@ DEFINE('D_TEMPLATE', 'template');
 include('functions/data.php');
 include('functions/template.php');
 
+
 #Site Setup: 
 $debug = data_setting_value($dbc, 'debug_status');
 
@@ -26,7 +27,14 @@ if(isset($_GET['page']))// if the page key exists
 }
 
 # page setup:
+include('config/queries.php');
 $page = data_page($dbc, $pageID);
+
+if(isset($_GET['id']))
+	{		
+		$opened = data_page($dbc, $_GET['id']);
+	}
+				 
 
 # User Setup
 $user = data_user($dbc, $_SESSION['username']);
