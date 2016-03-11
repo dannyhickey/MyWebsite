@@ -55,8 +55,8 @@ if(!isset($_SESSION['username']))
 							$blurb = substr(strip_tags($page_list['body']), 0, 160);
 						
 						?>
-						
-						<a class="list-group-item <?php if($page_list['id'] == $opened['id']) { echo 'active';} ?>" href="index.php?id=<?php echo $page_list['id']; ?>">
+												
+						<a class="list-group-item <?php selected($page_list['id'], $opened['id'], 'active'); ?>" href="index.php?id=<?php echo $page_list['id']; ?>">
 							<h4 class="list-group-item-heading"><?php echo $page_list['title']; ?> </h4>
 							<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 						</a>
@@ -104,11 +104,12 @@ if(!isset($_SESSION['username']))
 							?>														
 							<option value="<?php echo $user_data['id']; ?>" 
 								<?php 
+									// Check if opened user is selected or not
 									if(isset($_GET['id']))
-									{
-										if($user_data['id'] == $opened['user']){ echo 'selected'; }	
+									{	
+										selected($user_data['id'], $opened['user'],	'selected');										
 									}else{
-										if($user_data['id'] == $user['id']) { echo 'selected'; }
+										selected($user_data['id'], $user, 'selected');
 									}
 									
 									

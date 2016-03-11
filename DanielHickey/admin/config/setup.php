@@ -12,7 +12,7 @@ DEFINE('D_TEMPLATE', 'template');
 #Functions:
 include('functions/data.php');
 include('functions/template.php');
-
+include('functions/sandbox.php');
 
 #Site Setup: 
 $debug = data_setting_value($dbc, 'debug_status');
