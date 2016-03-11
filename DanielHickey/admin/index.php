@@ -41,13 +41,19 @@ if(!isset($_SESSION['username']))
 				if(isset($_POST['submitted']) == 1)
 				{
 				
-				$title = mysqli_real_escape_string($dbc, $_POST['title']);
-				$label = mysqli_real_escape_string($dbc, $_POST['label']);
-				$header = mysqli_real_escape_string($dbc, $_POST['header']);
-				$body = mysqli_real_escape_string($dbc, $_POST['body']);
+					$title = mysqli_real_escape_string($dbc, $_POST['title']);
+					$label = mysqli_real_escape_string($dbc, $_POST['label']);
+					$header = mysqli_real_escape_string($dbc, $_POST['header']);
+					$body = mysqli_real_escape_string($dbc, $_POST['body']);
+					
+					if(isset($_GET['id']) != '')
+					{
+						$query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
+					}else{
+						$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
+					}
 				
-				
-					$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
+					
 					$result = mysqli_query($dbc, $query);
 					
 					if($result)
@@ -112,7 +118,7 @@ if(!isset($_SESSION['username']))
 				  ?>
 				
 								
-				<form action="index.php" method="post" role="form">
+				<form action="index.php?id=<?php  echo $opened['id']; ?>" method="post" role="form">
 					
 				<div class ="form-group">
 					
@@ -178,12 +184,13 @@ if(!isset($_SESSION['username']))
 				<div class ="form-group">
 					
 					<label for="body">Body:</label>
-					<textarea class="form-control" name="body" id="body" rows="8" placeholder="Page Body"><?php echo $opened['body']; ?></textarea>
+					<textarea class="form-control editor" name="body" id="body" rows="8" placeholder="Page Body"><?php echo $opened['body']; ?></textarea>
 					
 				</div>
 				
 				<button type="submit" class="btn btn-warning">Save</button>
 				<input type="hidden" name="submitted" value="1">
+				<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
 				
 				</form>
 			</div>
