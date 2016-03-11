@@ -5,6 +5,11 @@
 				$all_variables = get_defined_vars();			
 			?>	
 			<?php //print_r($all_variables); will print all the variables ?>
+			<h1>Path Array</h1>
+			<pre>
+				<?php print_r($path);?>
+			</pre>
+			
 			<h1>GET</h1>
 			<pre>
 				<?php print_r($_GET);?>

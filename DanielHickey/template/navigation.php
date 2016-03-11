@@ -9,7 +9,7 @@
 				
 				<ul class="nav navbar-nav">
 					
-					<?php nav_main($dbc, $pageID); ?>
+					<?php nav_main($dbc, $path); ?>
 					
 					<li><a href="index.php?page=3">FAQ</a></li>
 					<li><a href="index.php?page=4">Contact</a></li>				
