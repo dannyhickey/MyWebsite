@@ -119,7 +119,9 @@
 		
 		<button type="submit" class="btn btn-warning">Save</button>
 		<input type="hidden" name="submitted" value="1">
+		<?php if(isset($opened['id'])){ ?>
 		<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
+		<?php } ?>
 		
 		</form>
 	</div>

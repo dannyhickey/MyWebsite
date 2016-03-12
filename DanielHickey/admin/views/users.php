@@ -51,14 +51,21 @@
 		<div class ="form-group">
 			
 			<label for="first">First Name:</label>
-			<input class="form-control" type="text" name="first" id="first" value="<?php echo $opened['first']; ?>" placeholder="First Name">
+			<input class="form-control" type="text" name="first" id="first" value="<?php echo $opened['first']; ?>" placeholder="First Name" autocomplete="off">
 			
 		</div>
 		
 		<div class ="form-group">
 			
 			<label for="last">Last Name:</label>
-			<input class="form-control" type="text" name="last" id="last" value="<?php echo $opened['last']; ?>" placeholder="Last Name">
+			<input class="form-control" type="text" name="last" id="last" value="<?php echo $opened['last']; ?>" placeholder="Last Name" autocomplete="off">
+			
+		</div>
+		
+		<div class ="form-group">
+			
+			<label for="email">Email Address:</label>
+			<input class="form-control" type="text" name="email" id="email" value="<?php echo $opened['email']; ?>" placeholder="Email Address" autocomplete="off">
 			
 		</div>
 		
@@ -76,14 +83,23 @@
 		<div class ="form-group">
 			
 			<label for="password">Password:</label>
-			<input class="form-control" type="text" name="password" id="password" value="" placeholder="Password">
+			<input class="form-control" type="password" name="password" id="password" value="" placeholder="Password" autocomplete="off">
+			
+		</div>	
+		
+			<div class ="form-group">
+			
+			<label for="passwordv">Verify Password:</label>
+			<input class="form-control" type="password" name="passwordv" id="passwordv" placeholder="Type Password Again" autocomplete="off">
 			
 		</div>	
 		
 		<button type="submit" class="btn btn-warning">Save</button>
 		<input type="hidden" name="submitted" value="1">
-		<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
 		
+		<?php if(isset($opened['id'])){ ?>
+		<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
+		<?php } ?>
 		</form>
 	</div>
 	
