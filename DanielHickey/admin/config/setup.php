@@ -21,14 +21,13 @@ $siteTitle = 'Daniel Hickey';
 
 if(isset($_GET['page']))// if the page key exists
 {
-	$pageID = $_GET['page'];//assigns the value given in URL to $pageID.
+	$page = $_GET['page'];//assigns the value given in URL to $pageID.
 }else{	
-	$pageID = 1;//else assigns the value 1 to pageID to revert to home page. 
+	$page = 'dashboard';//else assigns the 'dashboard' to page to revert to the dashboard page. 
 }
 
 # page setup:
 include('config/queries.php');
-$page = data_page($dbc, $pageID);
 
 if(isset($_GET['id']))
 	{		

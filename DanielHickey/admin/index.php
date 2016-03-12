@@ -1,6 +1,6 @@
 <?php 
 include('template/header.php');		
-include('views/pages.php');
+include('views/'.$page.'.php');
 include('template/footer.php');	
 ?>
 		
