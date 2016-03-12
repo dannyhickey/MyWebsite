@@ -7,7 +7,7 @@
 			
 		<div class="list-group">
 			
-		<a class="list-group-item" href="index.php">
+		<a class="list-group-item" href="?page=pages">
 			<i class="fa fa-plus"></i> New Page 							
 		</a>
 		
@@ -16,15 +16,15 @@
 			$query = "SELECT * FROM pages ORDER BY title ASC";
 			$result = mysqli_query($dbc, $query);
 			
-			while ($page_list = mysqli_fetch_assoc($result)) {
+			while ($list = mysqli_fetch_assoc($result)) {
 					
 					// strip the tags and then limit to 160 chars
-					$blurb = substr(strip_tags($page_list['body']), 0, 160);
+					$blurb = substr(strip_tags($list['body']), 0, 160);
 				
 				?>
 										
-				<a class="list-group-item <?php selected($page_list['id'], $opened['id'], 'active'); ?>" href="index.php?id=<?php echo $page_list['id']; ?>">
-					<h4 class="list-group-item-heading"><?php echo $page_list['title']; ?> </h4>
+				<a class="list-group-item <?php selected($list['id'], $opened['id'], 'active'); ?>" href="index.php?page=pages&id=<?php echo $list['id']; ?>">
+					<h4 class="list-group-item-heading"><?php echo $list['title']; ?> </h4>
 					<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 				</a>
 				
@@ -46,7 +46,7 @@
 		 ?>
 	
 						
-		<form action="index.php?id=<?php  echo $opened['id']; ?>" method="post" role="form">
+		<form action="index.php?page=pages&id=<?php  echo $opened['id']; ?>" method="post" role="form">
 			
 		<div class ="form-group">
 			
