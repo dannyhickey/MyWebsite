@@ -24,7 +24,11 @@
 				?>
 										
 				<a class="list-group-item <?php selected($list['id'], $opened['id'], 'active'); ?>" href="index.php?page=pages&id=<?php echo $list['id']; ?>">
-					<h4 class="list-group-item-heading"><?php echo $list['title']; ?> </h4>
+					<h4 class="list-group-item-heading"><?php echo $list['title']; ?> 
+					
+					<span class="pull-right"><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></span>	
+						
+					</h4>
 					<p class="list-group-item-text"><?php echo $blurb; ?></p>							
 				</a>
 				
