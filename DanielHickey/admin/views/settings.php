@@ -16,7 +16,7 @@ $result = mysqli_query($dbc, $query);
 
 while ($opened = mysqli_fetch_assoc($result)) {
 			?>
-			<form class="form-inline" action="index.php?page=users&id=<?php  echo $opened['id']; ?>" method="post" role="form">
+			<form class="form-inline" action="index.php?page=settings&id=<?php  echo $opened['id']; ?>" method="post" role="form">
 
 				<div class ="form-group">
 
@@ -42,7 +42,7 @@ while ($opened = mysqli_fetch_assoc($result)) {
 				<button type="submit" class="btn btn-warning">Save</button>
 				<input type="hidden" name="submitted" value="1">
 				
-				<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
+				<input type="hidden" name="openedid" value="<?php echo $opened['id']; ?>">
 				
 			</form>
 
