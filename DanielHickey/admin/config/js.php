@@ -28,7 +28,7 @@
 		$(".btn-delete").on("click", function() {
 			
 			var selected = $(this).attr("id");
-			var pageid = selected.split("del_").join("");
+			var pageid = selected.split("del_").join("");//replace del_ with an empty string
 			
 			var confirmed = confirm("Are you sure you want to delete this page?");
 			

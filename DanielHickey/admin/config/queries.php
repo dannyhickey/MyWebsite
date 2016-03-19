@@ -17,14 +17,14 @@
 				
 				if(isset($_POST['id']) != '') {
 					$action = 'updated';
-					$q = "UPDATE posts SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
+					$query = "UPDATE posts SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
 				} else {
 					$action = 'added';							
-					$q = "INSERT INTO posts (type, user, slug, title, label, header, body) VALUES (1, $_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
+					$query = "INSERT INTO posts (type, user, slug, title, label, header, body) VALUES (1, $_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
 				}
 				
 				
-				$r = mysqli_query($dbc, $q);
+				$r = mysqli_query($dbc, $query);
 				
 				if($r){
 					
@@ -33,7 +33,7 @@
 				} else {
 					
 					$message = '<p class="alert alert-danger">Page could not be '.$action.' because: '.mysqli_error($dbc);
-					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';
+					$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
 					
 				}
 							
@@ -72,17 +72,17 @@
 				if(isset($_POST['id']) != '') {
 					
 					$action = 'updated';
-					$q = "UPDATE users SET first = '$first', last = '$last', email = '$_POST[email]', $password status = $_POST[status] WHERE id = $_GET[id]";
-					$r = mysqli_query($dbc, $q);
+					$query = "UPDATE users SET first = '$first', last = '$last', email = '$_POST[email]', $password status = $_POST[status] WHERE id = $_GET[id]";
+					$r = mysqli_query($dbc, $query);
 					
 				} else {
 					
 					$action = 'added';
 					
-					$q = "INSERT INTO users (first, last, email, password, status) VALUES ('$first', '$last', '$_POST[email]', SHA1('$_POST[password]'), '$_POST[status]')";
+					$query = "INSERT INTO users (first, last, email, password, status) VALUES ('$first', '$last', '$_POST[email]', SHA1('$_POST[password]'), '$_POST[status]')";
 					
 					if($verify == true) {
-						$r = mysqli_query($dbc, $q);
+						$r = mysqli_query($dbc, $query);
 					}
 
 				}
@@ -99,7 +99,7 @@
 					if($verify == false) {
 						$message .= '<p class="alert alert-danger">Password fields empty and/or do not match.</p>';
 					}
-					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';
+					$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
 					
 				}
 							
@@ -119,8 +119,8 @@
 				if(isset($_POST['id']) != '') {
 					
 					$action = 'updated';
-					$q = "UPDATE navigation SET id = '$_POST[id]', label = '$label', url = '$url', position = $_POST[position], status = $_POST[status] WHERE id = '$_POST[openedid]'";
-					$r = mysqli_query($dbc, $q);
+					$query = "UPDATE navigation SET id = '$_POST[id]', label = '$label', url = '$url', position = $_POST[position], status = $_POST[status] WHERE id = '$_POST[openedid]'";
+					$r = mysqli_query($dbc, $query);
 					
 				} 
 				
@@ -133,7 +133,7 @@
 				} else {
 					
 					$message = '<p class="alert alert-danger">Navigation Item could not be '.$action.' because: '.mysqli_error($dbc);
-					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';
+					$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
 					
 				}
 							
@@ -152,8 +152,8 @@
 				if(isset($_POST['id']) != '') {
 					
 					$action = 'updated';
-					$q = "UPDATE settings SET id = '$_POST[id]', label = '$label', value = '$value' WHERE id = '$_POST[openedid]'";
-					$r = mysqli_query($dbc, $q);
+					$query = "UPDATE settings SET id = '$_POST[id]', label = '$label', value = '$value' WHERE id = '$_POST[openedid]'";
+					$r = mysqli_query($dbc, $query);
 					
 				} 
 				
@@ -166,7 +166,7 @@
 				} else {
 					
 					$message = '<p class="alert alert-danger">Setting could not be '.$action.' because: '.mysqli_error($dbc);
-					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';
+					$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
 					
 				}
 							
