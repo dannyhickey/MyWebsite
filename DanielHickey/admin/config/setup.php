@@ -21,7 +21,7 @@ $siteTitle = 'Daniel Hickey';
 
 if(isset($_GET['page']))// if the page key exists
 {
-	$page = $_GET['page'];//assigns the value given in URL to $pageID.
+	$page = $_GET['page'];//assigns the value given in URL to $pageid.
 }else{	
 	$page = 'dashboard';//else assigns the 'dashboard' to page to revert to the dashboard page. 
 }

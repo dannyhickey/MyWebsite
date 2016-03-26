@@ -12,7 +12,7 @@
 		} else {
 			
 			echo 'There was an error...<br>';
-			echo $q.'<br>';
+			echo $query.'<br>';
 			echo mysqli_error($dbc);
 			
 		}
