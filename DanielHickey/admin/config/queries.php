@@ -24,9 +24,9 @@
 				}
 				
 				
-				$r = mysqli_query($dbc, $query);
+				$result = mysqli_query($dbc, $query);
 				
-				if($r){
+				if($result){
 					
 					$message = '<p class="alert alert-success">Page was '.$action.'!</p>';
 					
@@ -73,7 +73,7 @@
 					
 					$action = 'updated';
 					$query = "UPDATE users SET first = '$first', last = '$last', email = '$_POST[email]', $password status = $_POST[status] WHERE id = $_GET[id]";
-					$r = mysqli_query($dbc, $query);
+					$result = mysqli_query($dbc, $query);
 					
 				} else {
 					
@@ -82,14 +82,14 @@
 					$query = "INSERT INTO users (first, last, email, password, status) VALUES ('$first', '$last', '$_POST[email]', SHA1('$_POST[password]'), '$_POST[status]')";
 					
 					if($verify == true) {
-						$r = mysqli_query($dbc, $query);
+						$result = mysqli_query($dbc, $query);
 					}
 
 				}
 				
 
 				
-				if($r){
+				if($result){
 					
 					$message = '<p class="alert alert-success">User was '.$action.'!</p>';
 					
@@ -120,13 +120,13 @@
 					
 					$action = 'updated';
 					$query = "UPDATE navigation SET id = '$_POST[id]', label = '$label', url = '$url', position = $_POST[position], status = $_POST[status] WHERE id = '$_POST[openedid]'";
-					$r = mysqli_query($dbc, $query);
+					$result = mysqli_query($dbc, $query);
 					
 				} 
 				
 
 				
-				if($r){
+				if($result){
 					
 					$message = '<p class="alert alert-success">Navigation Item was '.$action.'!</p>';
 					
@@ -153,13 +153,13 @@
 					
 					$action = 'updated';
 					$query = "UPDATE settings SET id = '$_POST[id]', label = '$label', value = '$value' WHERE id = '$_POST[openedid]'";
-					$r = mysqli_query($dbc, $query);
+					$result = mysqli_query($dbc, $query);
 					
 				} 
 				
 
 				
-				if($r){
+				if($result){
 					
 					$message = '<p class="alert alert-success">Setting was '.$action.'!</p>';
 					
