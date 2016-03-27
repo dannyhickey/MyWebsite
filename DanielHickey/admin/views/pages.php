@@ -28,7 +28,7 @@
 					
 					<span class="pull-right">
 						
-						<a href="#" id="del_<?php echo $list['id']; ?>class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></a>
+						<a href="#" id="del_<?php echo $list['id']; ?>" class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></a>
 						<a href="index.php?page=pages&id=<?php echo $list['id']; ?>" class="btn btn-default"><i class="fa fa-chevron-right"></i></a> 	
 						
 					</span>	
@@ -85,7 +85,7 @@
 							{	
 								selected($user_data['id'], $opened['user'],	'selected');										
 							}else{
-								selected($user_data['id'], $user, 'selected');
+								 selected($user_data['id'], $user['id'], 'selected');
 							}
 							
 							
@@ -100,7 +100,7 @@
 		
 		<div class ="form-group">
 			
-			<label for="label">Slug:</label>
+			<label for="slug">Slug:</label>
 			<input class="form-control" type="text" name="slug" id="slug" value="<?php echo $opened['slug']; ?>" placeholder="Page Slug">
 			
 		</div>

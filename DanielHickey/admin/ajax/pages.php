@@ -6,7 +6,7 @@
 	
 	$query = "DELETE FROM pages WHERE id = $id";
 	$result = mysqli_query($dbc, $query);
-	
+	 
 		if($result) {
 			echo 'Page Deleted';
 		} else {
