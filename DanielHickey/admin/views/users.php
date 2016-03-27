@@ -94,7 +94,7 @@
 			
 		</div>	
 		
-		<button type="submit" class="btn btn-warning">Save</button>
+		<button type="submit" class="btn btn-default">Save</button>
 		<input type="hidden" name="submitted" value="1">
 		
 		<?php if(isset($opened['id'])){ ?>
