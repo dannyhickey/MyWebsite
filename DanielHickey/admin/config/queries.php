@@ -29,10 +29,10 @@
 								
 								if($result)
 								{
-									$message = '<p>Page was '.$action.'!</p>';
+									$message = '<p class="alert alert-success">Page was '.$action.'!</p>';
 								}else{
-									$message = '<p>Page could not be '.$action.' due to: '.mysqli_error($dbc);
-									$message .= '<p>'.$query.'</p>';
+									$message = '<p class="alert alert-danger">Page could not be '.$action.' because: '.mysqli_error($dbc);
+									$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
 								}
 							} 
 							if(isset($_GET['id']))
@@ -68,28 +68,33 @@
 
 									}
 
-									if(isset($_GET[
-								'id']) != '')
-								{
-									$action = 'updated';
-									$query = "UPDATE users SET first = '$first', last = '$last', password = sha1('$_POST[password]'), status = $_POST[status] WHERE id = $_GET[id]";
-								}else{
-									$action = 'added';
-									$query = "INSERT INTO users (first, last, password, status) VALUES 
-									('$first', '$last', sha1('$_POST[password]'), $_POST[status]')";
-								}
-							
+									if(isset($_GET['id']) != '')
+										{
+											$action = 'updated';
+											$query = "UPDATE users SET first = '$first', last = '$last', email = '$_POST[email]', $password status = $_POST[status] WHERE id = $_GET[id]";
+											//$query = "UPDATE users SET first = '$first', last = '$last', password = sha1('$_POST[password]'), status = $_POST[status] WHERE id = $_GET[id]";
+										}else{
+											$action = 'added';
+											$query = "INSERT INTO users (first, last, email, password, status) VALUES ('$first', '$last', '$_POST[email]', SHA1('$_POST[password]'), '$_POST[status]')";
+											//$query = "INSERT INTO users (first, last, password, status) VALUES ('$first', '$last', sha1('$_POST[password]'), $_POST[status]')";
+										}
+									
 								
 								$result = mysqli_query($dbc, $query);
 								
 								if($result)
 								{
-									$message = '<p>User was '.$action.'!</p>';
+									$message = '<p class="alert alert-success">User was '.$action.'!</p>';
+  
 								}else{
-									$message = '<p>User could not be '.$action.' due to: '.mysqli_error($dbc);
-									$message .= '<p>'.$query.'</p>';
-								}
-							} 
+									 $message = '<p class="alert alert-danger">User could not be '.$action.' because: '.mysqli_error($dbc);
+					                    if($verify == false) {
+					                        $message .= '<p class="alert alert-danger">Password fields empty and/or do not match.</p>';
+					                    }
+					                    $message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
+														$message .= '<p>'.$query.'</p>';
+													}
+								} 
 							
 							if(isset($_GET['id']))
 							{		
