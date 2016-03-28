@@ -47,9 +47,29 @@
 							{
 							
 								$first = mysqli_real_escape_string($dbc, $_POST['first']);
-								$last = mysqli_real_escape_string($dbc, $_POST['last']);
-															
-								if(isset($_GET['id']) != '')
+								$last = mysqli_real_escape_string($dbc, $_POST['last' ]);
+
+									if($_POST['password'] != '') {
+
+									if($_POST['password'] == $_POST['passwordv']) {
+
+									$password = " password = SHA1('$_POST[password]'),";
+									$verify = true;
+
+									} else {
+
+									$verify = false;
+
+									}
+
+									} else {
+
+									$verify = false;
+
+									}
+
+									if(isset($_GET[
+								'id']) != '')
 								{
 									$action = 'updated';
 									$query = "UPDATE users SET first = '$first', last = '$last', password = sha1('$_POST[password]'), status = $_POST[status] WHERE id = $_GET[id]";
