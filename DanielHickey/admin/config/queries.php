@@ -3,43 +3,82 @@
 					
 					case 'dashboard':
 						
-						break;
+					break;
 						
-					case 'pages':
+						case 'pages':
+						if(isset($_POST['submitted']) == 1) {
+							
+							$title = mysqli_real_escape_string($dbc, $_POST['title']);
+							$label = mysqli_real_escape_string($dbc, $_POST['label']);
+							$header = mysqli_real_escape_string($dbc, $_POST['header']);
+							$body = mysqli_real_escape_string($dbc, $_POST['body']);
+							
+							if(isset($_GET['id']) != '') {
+								$action = 'updated';
+								$query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]',  title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
+								//$query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
+							} else {
+								$action = 'added';							
+								$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
+							}
+							
+							
+							$result = mysqli_query($dbc, $query);
+							
+							if($result){
+								
+								$message = '<p class="alert alert-success">Page was '.$action.'!</p>';
+								
+							} else {
+								
+								$message = '<p class="alert alert-danger">Page could not be '.$action.' because: '.mysqli_error($dbc);
+								$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
+								
+							}
+										
+						}
 						
-						if(isset($_POST['submitted']) == 1)
-							{
-							
-								$title = mysqli_real_escape_string($dbc, $_POST['title']);
-								$label = mysqli_real_escape_string($dbc, $_POST['label']);
-								$header = mysqli_real_escape_string($dbc, $_POST['header']);
-								$body = mysqli_real_escape_string($dbc, $_POST['body']);
-								
-								if(isset($_GET['id']) != '')
-								{
-									$action = 'updated';
-									$query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]', title = '$title', label = '$label', header = '$header', body = '$body' WHERE id = $_GET[id]";
-								}else{
-									$action = 'added';
-									$query = "INSERT INTO pages (user, slug, title, label, header, body) VALUES ($_POST[user], '$_POST[slug]', '$title', '$label', '$header', '$body')";
-								}
-							
-								
-								$result = mysqli_query($dbc, $query);
-								
-								if($result)
-								{
-									$message = '<p class="alert alert-success">Page was '.$action.'!</p>';
-								}else{
-									$message = '<p class="alert alert-danger">Page could not be '.$action.' because: '.mysqli_error($dbc);
-									$message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
-								}
-							} 
-							if(isset($_GET['id']))
+								if(isset($_GET['id']))
 								{		
 									$opened = data_page($dbc, $_GET['id']);
 								}
-						break;
+						
+					break;
+					// case 'pages':
+// 						
+						// if(isset($_POST['submitted']) == 1)
+							// {
+// 							
+								// $title = mysqli_real_escape_string($dbc, $_POST['title']);
+								// $label = mysqli_real_escape_string($dbc, $_POST['label']);
+								// $header = mysqli_real_escape_string($dbc, $_POST['header']);
+								// $body = mysqli_real_escape_string($dbc, $_POST['body']);
+// 								
+								// if(isset($_GET['id']) != '')
+								// {
+									// $action = 'updated';
+									// $query = "UPDATE pages SET user = $_POST[user], slug = '$_POST[slug]',  label = '$label', title = '$title', header = '$header', body = '$body' WHERE id = $_GET[id]";
+								// }else{
+									// $action = 'added';
+									// $query = "INSERT INTO pages (user, slug, label, title, header, body) VALUES ($_POST[user], '$_POST[slug]', '$label', '$title', '$header', '$body')";
+								// }
+// 							
+// 								
+								// $result = mysqli_query($dbc, $query);
+// 								
+								// if($result)
+								// {
+									// $message = '<p class="alert alert-success">Page was '.$action.'!</p>';
+								// }else{
+									// $message = '<p class="alert alert-danger">Page could not be '.$action.' because: '.mysqli_error($dbc);
+									// $message .= '<p class="alert alert-warning">Query: '.$query.'</p>';
+								// }
+							// } 
+							// if(isset($_GET['id']))
+								// {		
+									// $opened = data_page($dbc, $_GET['id']);
+								// }
+						// break;
 						
 					case 'users':
 						
@@ -72,11 +111,11 @@
 										{
 											$action = 'updated';
 											$query = "UPDATE users SET first = '$first', last = '$last', email = '$_POST[email]', $password status = $_POST[status] WHERE id = $_GET[id]";
-											//$query = "UPDATE users SET first = '$first', last = '$last', password = sha1('$_POST[password]'), status = $_POST[status] WHERE id = $_GET[id]";
+											
 										}else{
 											$action = 'added';
 											$query = "INSERT INTO users (first, last, email, password, status) VALUES ('$first', '$last', '$_POST[email]', SHA1('$_POST[password]'), '$_POST[status]')";
-											//$query = "INSERT INTO users (first, last, password, status) VALUES ('$first', '$last', sha1('$_POST[password]'), $_POST[status]')";
+											
 										}
 									
 								
