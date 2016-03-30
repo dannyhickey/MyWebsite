@@ -23,7 +23,6 @@ $site_title = 'AtomCMS 2.0';
 
 if(!isset($path['call_parts'][0]) || $path['call_parts'][0] == '' ) {
 	
-	//$path['call_parts'][0] = 'home'; // Set $path[call_parts][0] to equal the value given in the URL
 	header('Location: home');
 	
 }

@@ -4,7 +4,6 @@ include('../../config/connection.php');
 	
 $list = $_GET['list'];	
 
-//print_r($list);
 
 foreach ($list as $position => $id) {
 	

@@ -7,12 +7,12 @@
 	error_reporting(E_ALL & ~E_NOTICE); 
 	
 	// Breakup the POST values into easy variables:
-	$id = $_GET['id']; // Unique identifier for the record we wish to UPDATE
+	$id = $_GET['id']; // Unique identifier for the record to UPDATE
 	$value = $_GET['value']; // New Value
 	$action = $_GET['action']; // 
 	
 	# Break up database info:
-	$db = explode('-', $_GET['db']); // Explode the table and feild name from string.
+	$db = explode('-', $_GET['db']); // Explode the table and field name from string.
 	$table = $db[0]; // Store the table name.
 	$field = $db[1]; // Store the field name.
 

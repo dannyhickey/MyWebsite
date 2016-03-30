@@ -4,7 +4,7 @@
 	<footer id="footer">
 		
 		<div class="container">
-			<p>This is my footer.</p>
+			<p>This is the footer.</p>
 		</div>
 		
 	</footer><!-- END footer -->

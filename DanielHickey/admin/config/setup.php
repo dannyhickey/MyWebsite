@@ -17,11 +17,11 @@ include('functions/sandbox.php');
 # Site Setup:
 $debug = data_setting_value($dbc, 'debug-status');
 
-$site_title = 'AtomCMS 2.0';
+$site_title = 'Daniel Hickey';
 
 if(isset($_GET['page'])) {
 	
-	$page = $_GET['page']; // Set $pageid to equal the value given in the URL
+	$page = $_GET['page']; // Set $pageid to equal the value in the URL
 	
 } else {
 	

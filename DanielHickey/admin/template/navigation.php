@@ -1,8 +1,4 @@
 <nav class="navbar navbar-default" role="navigation">
-	
-
-	
-	
 		
 		<ul class="nav navbar-nav">
 
