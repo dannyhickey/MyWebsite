@@ -1,13 +1,13 @@
-	</div><!--END wrapper-->
-	
-<footer id="footer">
+	</div><!-- END wrap -->		
 
-	<p>insert footer here</p>						
-			
-</footer>	<!--END footer-->
+	<footer id="footer">
 	
-	<?php if ($debug == 1){ include('widgets/debug.php'); } ?>		
+		<p>This is my footer.</p>
+	
+	</footer><!-- END footer -->
+
+	<?php if($debug == 1) { include('widgets/debug.php'); } ?>
+	
 </body>
-	
-	
+
 </html>

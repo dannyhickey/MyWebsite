@@ -1,38 +1,46 @@
 <?php
-// JavaScript file:
+// Javascript:
+
+
+
+
+
 ?>
 
-<!--
-	todo: debug jQuery 
--->
-
-<!--jQuery-->
+<!-- jQuery -->
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
-<!--jQuery UI-->
+<!-- jQuery UI -->
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
-
-<!--
+<!-- TinyMCE -->
 <script src="js/tinymce/tinymce.min.js"></script>
--->
+
+<!-- Dropzone.js -->
+<script src="js/dropzone.js"></script>
+
+<!-- Atom.SaveOnBlur.js -->
+<script src="js/jquery.atom.SaveOnBlur.js"></script>
 
 <script>
+	
 	$(document).ready(function() {
-		$("#console_debug").hide();
-
-		$("#btn_debug").click(function() {
-			$("#console_debug").toggle();
+		
+		$("#console-debug").hide();
+		
+		$("#btn-debug").click(function(){
+			
+			$("#console-debug").toggle();
+			
 		});
+		
 		
 		$(".btn-delete").on("click", function() {
 			
 			var selected = $(this).attr("id");
-			var pageid = selected.split("del_").join("");//replace del_ with an empty string
+			var pageid = selected.split("del_").join("");
 			
 			var confirmed = confirm("Are you sure you want to delete this page?");
 			
@@ -43,8 +51,49 @@
 				$("#page_"+pageid).remove();				
 				
 			}
+			
+
+			
+			//alert(selected);
+			
+		})
 		
-	});
+		
+		$("#sort-nav").sortable({
+			cursor: "move",
+			update: function() {
+				var order = $(this).sortable("serialize");
+				$.get("ajax/list-sort.php", order);
+			}
+		});
+
+
+		$('.nav-form').submit(function(event){
+			
+			var navData = $(this).serializeArray();
+			var navLabel = $('input[name=label]').val();
+			var navID = $('input[name=id]').val();
+		
+			
+			$.ajax({
+				
+				url: "ajax/navigation.php",
+				type: "POST",
+				data: navData
+				
+			}).done(function(){
+				
+				$("#label_"+navID).html(navLabel);
+				
+			});
+			
+			
+			event.preventDefault();
+			
+		});
+		
+		
+	}); // END document.ready();
 
 	tinymce.init({
 	    selector: ".editor",
@@ -66,4 +115,5 @@
 	        {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
 	    ]
 	 }); 
+	
 </script>

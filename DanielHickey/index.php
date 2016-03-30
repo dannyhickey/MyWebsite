@@ -1,34 +1,5 @@
-<?php include('config/setup.php'); ?>
+<?php include('template/header.php'); // Page Header ?>
 
-<!DOCTYPE html>
-<html>
-<head>	
-	<title><?php echo $page['title'] . " | "  . $siteTitle; ?></title>	
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	
-	<?php include('config/css.php'); ?>
-	<?php include('config/js.php'); ?>
-			
-</head>
-<body>
-	<div id="wrap">
-		<?php include (D_TEMPLATE . '/navigation.php'); ?>
-		
-		<div class="container">				
-			<h1><?php echo $page['header']; //associative array to the "header" column.?></h1>
-			
-			<?php echo $page['body_formatted'];//associative array to the "body_formatted" column. ?>
-					
-		</div>
-	</div><!--END wrapper-->
-	
-	<?php include (D_TEMPLATE . '/footer.php'); ?>
-	
-	<?php if ($debug == 1){ include('widgets/debug.php'); } ?>		
-</body>
-	
-	
-</html>
+<?php include('views/'.$view['name'].'.php'); // View Type ?>
+
+<?php include('template/footer.php'); // Page Footer ?>	

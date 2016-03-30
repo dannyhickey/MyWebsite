@@ -1,13 +1,13 @@
 <?php
 
-#Start Session:
-
+# Start Session:
 session_start();
 
 unset($_SESSION['username']); // Delete the username key
 
-//can also use session_destroy(); to delete all session keys.
+//session_destroy(); // This would delete all of the session keys
 
-header('location: login.php'); // Redirect to login.php
-	
+header('Location: login.php'); // Redirect to login.php
+
+
 ?>

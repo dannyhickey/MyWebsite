@@ -1,15 +1,4 @@
-<?php 
-/*
-Explaining get_path() function:
-
-    First, check if the module is present, else, we can't do anything.
-    Turn on the Rewrite Engine
-    then it checks if the request filename isn't a file
-    and checks if it isn't a directory
-    Then, the RewriteRule makes a call to index.php, no matter what was written in the URL
-    Close the if statement
- * */
-
+<?php
 
 function get_path() {
   $path = array();
@@ -35,12 +24,23 @@ function get_path() {
 return $path;
 }
 
-function selected($value1, $value2, $return)
-{
-	if($value1 == $value2)
-	{
-		echo $return;
-	}
+function get_slug($dbc, $url) {
+	
+	$pos = strrpos($url, '/');
+	$slug = substr($url, $pos + 1);
+	
+	return $slug;
+	
 }
 
- ?>
+
+function selected($value1, $value2, $return) {
+	
+	if($value1 == $value2) {
+		echo $return;
+	}
+	
+}
+
+
+?>

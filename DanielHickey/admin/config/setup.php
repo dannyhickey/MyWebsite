@@ -1,35 +1,43 @@
 <?php
-// Setup file:
+// Setup File:
 
 error_reporting(0);
 
-# Database Connecton:
+# Database Connection:
 include('../config/connection.php');
 
-#Constants:
+# Constants:
 DEFINE('D_TEMPLATE', 'template');
 
-#Functions:
+# Functions:
 include('functions/data.php');
 include('functions/template.php');
 include('functions/sandbox.php');
 
-#Site Setup: 
-$debug = data_setting_value($dbc, 'debug_status');
+# Site Setup:
+$debug = data_setting_value($dbc, 'debug-status');
 
-$siteTitle = 'Daniel Hickey';
+$site_title = 'AtomCMS 2.0';
 
-if(isset($_GET['page']))// if the page key exists
-{
-	$page = $_GET['page'];//assigns the value given in URL to $pageid.
-}else{	
-	$page = 'dashboard';//else assigns the 'dashboard' to page to revert to the dashboard page. 
+if(isset($_GET['page'])) {
+	
+	$page = $_GET['page']; // Set $pageid to equal the value given in the URL
+	
+} else {
+	
+	$page = 'dashboard'; // Set $pageid equal to 1 or the Home Page.
+	
 }
 
-# page setup:
+# Page Setup:
 include('config/queries.php');
 
-# User Setup
+
+
+
+
+# User Setup:
 $user = data_user($dbc, $_SESSION['username']);
+
 
 ?>
