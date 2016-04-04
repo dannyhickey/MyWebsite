@@ -47,10 +47,6 @@
 				
 			}
 			
-
-			
-			//alert(selected);
-			
 		})
 		
 		

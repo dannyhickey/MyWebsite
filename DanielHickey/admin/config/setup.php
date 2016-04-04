@@ -21,11 +21,11 @@ $site_title = 'Daniel Hickey';
 
 if(isset($_GET['page'])) {
 	
-	$page = $_GET['page']; // Set $pageid to equal the value in the URL
+	$page = $_GET['page'];
 	
 } else {
 	
-	$page = 'dashboard'; // Set $pageid equal to 1 or the Home Page.
+	$page = 'dashboard'; 
 	
 }
 
