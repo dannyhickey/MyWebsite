@@ -14,7 +14,7 @@
 <!-- Dropzone CSS -->
 <link rel="stylesheet" href="css/dropzone.css">
 
-<!-- Atom.SaveOnBlur CSS -->
+<!-- SaveOnBlur CSS -->
 <link rel="stylesheet" href="css/jquery.atom.SaveOnBlur.css">
 
 <!-- FontAwesome -->
