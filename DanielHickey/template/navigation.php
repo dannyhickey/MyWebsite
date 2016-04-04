@@ -7,11 +7,9 @@
 	<div class="container">	
 		
 		<ul class="nav navbar-nav">
-			
+						
 			<?php nav_main($dbc, $path); ?>
 			
-			<!--<li><a href="#">FAQ</a></li>
-			<li><a href="#">Contact</a></li>-->
 		</ul>
 		
 	</div>

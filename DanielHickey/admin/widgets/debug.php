@@ -4,9 +4,7 @@
 	
 		$all_vars = get_defined_vars();
 	
-	?>
-	<?php //print_r($all_vars); ?>
-	
+	?>	
 		
 <h1>GET</h1>
 	
