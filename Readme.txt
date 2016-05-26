@@ -9,4 +9,4 @@ Photo Editing: PhotoShop & Lightroom
 
 IDE: Decided to use Aptana Studio on this occasion.
 
-Other: Google Web Fonts & and possibly one or two others. 
+Other: Google Web Fonts & and fontawesome.io
